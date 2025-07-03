@@ -1,0 +1,56 @@
+% ============================================================
+% CHAPTER 7: CONCLUSION AND FUTURE WORK
+% ============================================================
+\chapter{Conclusion and Future Work}
+\label{chap:conclusion}
+
+\section{Conclusion}
+This thesis investigated decentralized Multi-Robot Path Planning (MRPP) by enhancing Graph Neural Network (GNN)-based communication with \textbf{Adaptive Diffusion Convolution (ADC)}. The objective was to overcome the limitations of fixed K-hop communication ranges by enabling the learning of an optimal information diffusion extent, parameterized by a diffusion time $t$, via imitation learning from Conflict-Based Search (CBS) expert trajectories in 2D grid environments.
+
+Key technical contributions and findings include:
+\begin{itemize}
+    \item \textbf{ADC Integration and Theoretical Benefits:} ADC was integrated into an MRPP framework, replacing fixed-K GNN aggregation. Theoretically, ADC offers guaranteed operator norm stability ($\|P_{\mathrm{ADC}}(t)\| \le 1$) and implements an adaptive spectral low-pass filter ($e^{-t\lambda}$) whose characteristics are tunable via the learnable $t$, providing advantages over standard GCNs.
+    \item \textbf{Empirical Performance of ADC Variants:}
+        \begin{itemize}
+            \item \textbf{ADC-FixedT} (non-learnable $t$) often matched or outperformed the best fixed-K GCN baselines in Success Rate (SR) and Flowtime (FT), particularly excelling in generalization from dense to sparse environments (e.g., +6.45\% SR improvement when trained on 30\% obstacles and tested on 20\%).
+            \item \textbf{ADC-Main} (learnable $t$) demonstrated competitive performance and matched the best GCN in high-clutter generalization (e.g., Train 10\% $\rightarrow$ Test 30\%). However, it did not consistently surpass ADC-FixedT, suggesting that the diffusion mechanism's structure is inherently robust, while optimizing $t$ via imitation learning presents challenges or offers benefits in specific contexts not fully captured.
+        \end{itemize}
+    \item \textbf{Ablation Insights:} The benefits of a learnable $t$ and deep Taylor truncation ($K_{trunc}$) were context-dependent. Simpler ADC configurations (ADC-FixedT, ADC-K1) proved effective in certain matched train-test conditions, indicating that further work is needed to robustly optimize the adaptive components of ADC-Main.
+    \item \textbf{Computational Overhead:} ADC introduces a moderate inference time increase (approx. 40-50\% over GCNs for $K_{trunc}=10$) but remains suitable for real-time applications.
+\end{itemize}
+In summary, ADC, particularly its diffusion process, provides a promising mechanism for enhancing stability, adaptability, and generalization in GNN-based decentralized MRPP. The strong performance of ADC-FixedT highlights the value of the diffusion structure, while the learnable aspects of ADC-Main warrant further research for consistent optimization.
+
+\section{Limitations}
+The primary technical limitations of this study include:
+\begin{itemize}
+    \item \textbf{Environment and Dynamics:} Evaluation was restricted to 2D grid worlds with static obstacles, not addressing continuous spaces or dynamic elements.
+    \item \textbf{Learning Paradigm:} Reliance on imitation learning bounds policy quality by the expert and is susceptible to covariate shift.
+    \item \textbf{ADC Parameter Optimization:} Suboptimal performance of ADC-Main in some cases indicates challenges in robustly learning the diffusion parameter $t$ and selecting $K_{trunc}$ solely through the current imitation learning signal.
+    \item \textbf{Scalability and Communication Model:} Experiments used N=5 robots and assumed ideal communication, leaving large-scale performance and robustness to realistic network effects unevaluated.
+\end{itemize}
+
+\section{Future Work}
+Future research should focus on addressing these limitations and extending the capabilities of ADC-based MRPP:
+\begin{itemize}
+    \item \textbf{Advanced Environments and Tasks:}
+        \begin{itemize}
+            \item Extend to continuous state/action spaces and incorporate dynamic obstacle avoidance.
+            \item Apply to complex multi-robot tasks (e.g., exploration, formation control).
+        \end{itemize}
+    \item \textbf{Enhanced Learning Methods:}
+        \begin{itemize}
+            \item Explore Multi-Agent Reinforcement Learning (MARL) or hybrid IL-RL approaches to potentially surpass expert performance and improve robustness.
+            \item Investigate methods for more robust optimization or contextual adaptation of ADC's diffusion parameter $t$ and truncation order $K_{trunc}$.
+            \item Explore alternative graph diffusion processes (e.g., personalized PageRank).
+        \end{itemize}
+    \item \textbf{Scalability and Robustness:}
+        \begin{itemize}
+            \item Conduct rigorous scalability evaluations with larger robot teams.
+            \item Integrate and evaluate performance under realistic communication constraints (noise, delay, packet loss).
+        \end{itemize}
+    \item \textbf{Sim-to-Real Transfer:} Validate the framework on physical robotic systems, addressing the sim-to-real gap.
+\end{itemize}
+These directions aim to build upon the demonstrated potential of adaptive diffusion to create more intelligent and adaptable decentralized multi-robot systems.
+
+\section{Concluding Remarks}
+This thesis successfully demonstrated the integration and benefits of Adaptive Diffusion Convolution in a GNN-based MRPP framework. The diffusion mechanism offers improved robustness and generalization over fixed-range communication, marking a step towards more flexible and intelligent multi-robot coordination in complex environments.

@@ -1,0 +1,101 @@
+\documentclass[btech,thesis,twoside]{iist}
+\usepackage{times} % Or your specific thesis class
+\usepackage{amsmath}
+\usepackage{amsfonts} % For mathbb if needed
+\usepackage{amssymb}  % For math symbols
+\usepackage{bm}       % For bold math symbols if preferred (e.g., \bm{A})
+% \usepackage{amsmath} % Already included by iist.cls
+% \usepackage{amsfonts} % Already included by amssymb loaded by iist.cls
+% \usepackage{amssymb} % Already included by iist.cls
+% \usepackage{bm} % Already included by iist.cls
+\usepackage{graphicx} % Added for potential figure reference
+\usepackage{algorithm}
+\usepackage{algorithmicx}
+% \usepackage{amsmath} % Already included
+% \usepackage{amssymb} % Already included
+% \usepackage{graphicx} % Already included
+\usepackage{booktabs} % For professional-looking tables (optional, but recommended)
+\usepackage{multirow} % For tables with multi-row cells (optional)
+% \usepackage{subcaption} % Already included by iist.cls
+\usepackage{algpseudocode}
+% Add hyperref if you want clickable refs to equations/sections
+\usepackage{hyperref} % Already present
+% Add TikZ packages
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, backgrounds, fit, positioning, shapes.geometric} % Corrected to 'backgrounds'
+
+% Add hyperref if you want clickable refs
+% \usepackage{hyperref} % Already present
+% \hypersetup{colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=cyan} % Already present
+\newcommand{\trainplotbase}{v1/project/MAPF-GNN-ADC/results/paper_plots}
+% Define figure/table reference commands if needed
+\newcommand{\reffig}[1]{Figure~\ref{#1}}
+\newcommand{\reftab}[1]{Table~\ref{#1}}
+\newcommand{\refsec}[1]{Section~\ref{#1}}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=green, urlcolor=blue} % Already present
+\title{Decentralized Multi-Agent Path Planning }
+\author{Velamala Rahul}
+\studentid{SC21B127}
+\advisor{Dr.Sourav Bhowmick}
+\specialization{Electronics and Communication Engineering (Avionics)}
+\department{Avionics}
+\date{May 2025}
+
+
+%% ---- Document starts here ---- %%
+
+% ... rest of the document
+
+
+%% ---- Document starts here ---- %%
+\begin{document}
+
+%% ---- Make the initial set of pages ---- %%
+\maketitle % Title page
+\makecertificate % Certificate 
+\makedeclaration % Declaration
+ % Dedication
+\makeacknowledgements % Acknowledgements
+\makeabstract % Abstract
+\maketableofcontents % Table of contents
+\makelistoffigures % List of figures
+% \makelistoftables % List of tables
+%\makelistofalgorithms % List of algorithms
+\makeabbreviations % List of abbreviations
+% \makenomenclature % Nomenclature (for symbols used)
+
+% Initialize chapter settings; DO NOT comment this line
+\makechaptersettings 
+
+
+%% ---- Start chapters here ---- %%
+\input{chapter1}
+\input{chapter2}
+\input{chap3_1}
+\input{chapter3}
+\input{chapter4}
+\input{chapter5}
+\input{chapter6}
+%% ---- Bibliography addition ----%%
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{doct}
+
+
+%% ---- List of Publications ----%%
+
+
+%% ---- Appendices starts here ---- %%
+
+
+%% ---- Index starts here ---- %%
+\makeindexsettings
+
+
+\end{document}
+
+
+
+
+
